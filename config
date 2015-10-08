@@ -195,3 +195,4 @@ exec_always setxkbmap -option ctrl:nocaps
 #exec feh --bg-scale ~/wall.png
 exec feh --bg-fill ~/w.jpg
 exec compton -b
+exec nm-applet
