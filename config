@@ -30,10 +30,9 @@ focus_follows_mouse no
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+F1 exec i3lock -c 000000
+bindsym $mod+F1 exec i3lock -c 000000 -i ~/background.png -t
 bindsym $mod+F2 exec setxkbmap us
 bindsym $mod+F3 exec setxkbmap tr
-bindsym $mod+F4 exec gksudo wpa_gui
 bindsym $mod+F5 exec xbacklight -dec 5
 bindsym $mod+F6 exec xbacklight -inc 5
 
@@ -47,7 +46,6 @@ bindsym $mod+d exec dmenu_run -l 10
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-bindsym $mod+q exec ~/.i3/winmenu.py
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -82,7 +80,7 @@ bindsym $mod+v split h
 bindsym $mod+g split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen
+bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -161,23 +159,15 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    #status_command    python3 ~/.i3/i3status.py
-    status_command i3status -c ~/.i3/i3status.conf
-    position          bottom
-    workspace_buttons yes
-  #colors {
-    #separator #333333
-    #background #2c001e
-    #statusline #aea79f
-    #focused_workspace #dd4814 #dd4814 #ffffff
-    #active_workspace #902a07 #902a07 #aea79f
-    #inactive_workspace #902a07 #902a07 #aea79f
-    #urgent_workspace #77216f #77216f #ffffff
-  #}
+        #status_command i3status -c ~/.config/i3/i3status.conf
+		status_command i3blocks
+		#status_command ~/code/i3status-rust/target/release/i3status-rs ~/code/i3status-rust/example_config.json
+        #tray_output primary
+        #font pango:DejaVu Sans Mono 20
 }
 
 
-hide_edge_borders both 
+hide_edge_borders both
 new_window normal 5
 new_float normal 5
 #bar {
@@ -193,6 +183,6 @@ exec_always setxkbmap -option ctrl:nocaps
 #client.unfocused #5e2750 #5e2750 #aea79f #5e2750
 #client.urgent #77216f #77216f #ffffff #efb73e
 #exec feh --bg-scale ~/wall.png
-exec feh --bg-fill ~/w.jpg
+#exec feh --bg-fill ~/w.jpg
 exec compton -b
 exec nm-applet
